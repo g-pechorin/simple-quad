@@ -48,16 +48,22 @@ int main(int argc, char* argv[])
 
 		const float spin = (float)glfwGetTime() * 50.f;
 
-		for (bool left = true; ; left = !left)
+		bool left = true;
+		do
 		{
+			// switch to the eye
 			glDrawBuffer(left ? GL_BACK_LEFT : GL_BACK_RIGHT);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			// setup the view-projection matricies
 			glMatrixMode(GL_PROJECTION);
 			glLoadIdentity();
 			glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
 			glMatrixMode(GL_MODELVIEW);
 			glLoadIdentity();
 			glRotatef(left ? -spin : spin, 0.f, 0.f, 1.f);
+
+			// draw the thing
 			glBegin(GL_TRIANGLES);
 			{
 				glColor3f(1.f, 0.f, 0.f);
@@ -71,11 +77,33 @@ int main(int argc, char* argv[])
 			}
 			glEnd();
 
-			if (!left)
-				break;
-		}
+			// draw the side thingies
+			glMatrixMode(GL_MODELVIEW);
+			glLoadIdentity();
+			glBegin(GL_QUADS);
+			if (left)
+			{
+				glColor3f(1.f, 0.f, 0.f);
+				glVertex3f(-0.9f, +1, 0.f);
+				glVertex3f(-0.9f, -1, 0.f);
+				glVertex3f(-0.8f, -1, 0.f);
+				glVertex3f(-0.8f, +1, 0.f);
+			}
+			else
+			{
+				glColor3f(0.f, 0.f, 1.f);
+				glVertex3f(+0.8f, -1, 0.f);
+				glVertex3f(+0.8f, +1, 0.f);
+				glVertex3f(+0.9f, +1, 0.f);
+				glVertex3f(+0.9f, -1, 0.f);
+			}
+			glEnd();
+			// switch eyes
+			left = !left;
 
-
+			// if we get here and left is now true ; we've just finished the right eye and we can stop
+		} while (false == left);
+		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
