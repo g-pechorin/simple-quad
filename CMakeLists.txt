@@ -9,13 +9,13 @@ endif(WIN32)
 
 include(cmade/pal_glfw.cmake)
 
-project(stoopid-quad)
+project(simple-quad)
 
 add_definitions(-DCMAKE_BINARY_DIR="${CMAKE_BINARY_DIR}") 
 add_definitions(-DCMAKE_SOURCE_DIR="${CMAKE_SOURCE_DIR}") 
 
 add_executable(
-	stoopid-quad
-		src/stoopid-quad.cpp
+	simple-quad
+		src/simple-quad.cpp
 	)
-	target_link_libraries(stoopid-quad glfw ${GLFW_LIBRARIES})
+	target_link_libraries(simple-quad glfw ${GLFW_LIBRARIES})
