@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 
 	glfwWindowHint(GLFW_STEREO, true);
 
-	GLFWwindow* window = glfwCreateWindow(640, 480, "Stoopid-Quad Buffered", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(640, 480, "Simple-Quad Buffered Program", nullptr, nullptr);
 	if (!window)
 	{
 		std::cerr << "ERROR ; glfwCreateWindow(...) failed" << std::endl;
@@ -98,6 +98,7 @@ int main(int argc, char* argv[])
 				glVertex3f(+0.9f, -1, 0.f);
 			}
 			glEnd();
+
 			// switch eyes
 			left = !left;
 
