@@ -1,5 +1,12 @@
 /***
- * Stoopid-Quad buffered example with GLFW3
+ * Peter LaValle / 2016-01-19
+ * 
+ * Stoopid-Quad buffered example using GLFW3
+ * 
+ * Draws a **red bar on the left side and in the left eye,** a blue bar on the right and in the right eye.
+ * Also draws a pair of overlapping spinning gradient-style triangles.
+ * Really just meant to check if Quad-Buffered OpenGL is working
+ * 
  * Based on this ; http://www.glfw.org/docs/latest/quick.html#quick_example
  */
 #include <GLFW/glfw3.h>
@@ -83,6 +90,7 @@ int main(int argc, char* argv[])
 			glBegin(GL_QUADS);
 			if (left)
 			{
+				// left side, eye, and is red
 				glColor3f(1.f, 0.f, 0.f);
 				glVertex3f(-0.9f, +1, 0.f);
 				glVertex3f(-0.9f, -1, 0.f);
@@ -91,6 +99,7 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
+				// right side, eye and is blue
 				glColor3f(0.f, 0.f, 1.f);
 				glVertex3f(+0.8f, -1, 0.f);
 				glVertex3f(+0.8f, +1, 0.f);
