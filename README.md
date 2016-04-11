@@ -1,6 +1,6 @@
 Peter LaValle / 2016-01-19
 
-# Stoopid-Quad buffered example using GLFW3
+# Stoopid-Quad buffered example using GLFW3ish
 
 This is a [quad-buffered](https://en.wikipedia.org/wiki/Multiple_buffering#Quad_buffering) example program written against [GLFW3/OpenGL](http://www.glfw.org/docs/latest/quick.html#quick_example).
 (GLSE 2? GLSE 3? whatever - nobody notices the desktop version's changes)
